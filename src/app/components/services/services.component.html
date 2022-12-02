@@ -1,0 +1,150 @@
+
+<app-header></app-header>
+<div class="servicepage">
+  <div class="row ">
+      <div class="col-md-12">
+          <div class="card" style="background-color: rgb(245, 212, 150) ;">
+            <div class="row" style="margin-top:50px ;">
+              <div class="col-md-4">
+                <div class="row">
+                  <div class="col-md-12">
+                    <p style="color: green ;">{{ errormessage?errormessage:'' }}</p>
+                  </div>
+                </div>
+                  <form  class="example-form"  [formGroup]="serviceform" (ngSubmit)="createservice()">
+
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Description</mat-label>
+                      <textarea matInput placeholder=" description"
+                      type="text"
+                      [formControlName]="'description'"
+                        name="description"
+                        required
+                        autofocus
+                      ></textarea>
+                    </mat-form-field>
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Cost</mat-label>
+                    <input matInput
+                    type="text"
+                    [formControlName]="'cost'"
+                      name="cost"
+                      required
+                      autofocus
+                    >
+                  </mat-form-field>
+                  <section class="example-section">
+                    <mat-checkbox (change)="checkedd($event)"  value="" class="example-margin" [disabled]="false">Is on offer</mat-checkbox>
+                  </section>
+
+                  <button type="submit" class="sign-up">
+                   Create service
+                </button>
+                </form>
+              </div>
+                <div class="col-md-2">
+                  <h4>Upload service images</h4>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Select service</mat-label>
+                      <mat-select  [(value)]="serviceselect">
+                        <mat-option>None</mat-option>
+
+                        <mat-option *ngFor="let service of servicess" [value]="service.value">
+                           {{service.viewValue}}
+                           </mat-option>
+
+                    </mat-select>
+                  </mat-form-field>
+                  {{ serviceselect }}
+                </div>
+                <div class="col-md-6">
+                   <input class="signup" type='file' (change)="uploadservicefiles($event)" multiple="">
+
+
+                   <button (click)="upload()" type="submit" class="sign-up">
+                      upload
+                 </button>
+                 <div  style="height:500px ; overflow-y: scroll;">
+                  <img *ngFor='let url of images'  [src]="url" height="150" width="200px" style="margin: 3px;"> <br/>
+
+
+                 </div>
+                </div>
+                <div class=" col-md-12" style="margin-top: -100px;max-height: 400px; overflow: scroll;" >
+                  <p style="text-align: center;font-weight: 600;"> Services</p>
+                  <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">Cost</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Is on offer</th>
+                        <th scope="col">action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let service of dbservices">
+                        <td>{{ service.description }}</td>
+                        <td>{{ service.cost }}</td>
+                        <ng-container *ngIf="service.isonoffer; else elseTemplate">
+                          <td><button (click)="updateisonoffer(service.id)" class="btn btn-success">disable</button></td>
+                        </ng-container>
+                        <ng-template #elseTemplate>
+                          <td><button (click)="updateisonoffer(service.id)" class="btn btn-success">enable</button></td>
+
+                        </ng-template>
+                        <td><button class="btn btn-primary" (click)="delete(service)">Delete</button></td>
+
+
+                      </tr>
+
+                    </tbody>
+                  </table>
+
+
+                </div>
+                <div class=" col-md-12" style="margin-top: 10px;max-height: 400px; overflow: scroll;" >
+                  <p style="text-align: center;font-weight: 600;"> bookings</p>
+               <table class="table table-hover">
+                <thead class=>
+                  <tr>
+                    <th scope="col">who booked</th>
+                    <th scope="col">phone</th>
+                    <th scope="col">amount paid</th>
+                    <th scope="col">amount required</th>
+                    <th scope="col">time paid</th>
+                    <th scope="col">attendant</th>
+                    <th scope="col">service</th>
+                    <th scope="col">service time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let booking of bookings">
+                    <td>{{ booking?.user.name }}</td>
+                    <td>{{ booking?.user.mobile }}</td>
+                    <td>{{ booking.amount }}</td>
+                    <td>{{ booking?.amountRequired }}</td>
+                    <td>{{ booking?.timepaid| date : 'short' }}</td>
+
+                    <td>{{ booking?.attendant?.name }}</td>
+                    <td>{{ booking?.services?.description }}</td>
+                    <td>{{ booking?.servicetime| date : 'short' }}</td>
+
+
+
+                  </tr>
+
+                </tbody>
+              </table>
+
+
+                </div>
+
+             </div>
+
+          </div>
+      </div>
+
+  </div>
+</div>
+
+

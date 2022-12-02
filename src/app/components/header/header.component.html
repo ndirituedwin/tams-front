@@ -1,0 +1,105 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-secondary fixed-top" style="margin-bottom: 100px;">
+
+  <a class="navbar-brand" routerLink="">
+    <img src="/assets/homepage/images/logo.jpg"  height="40px" alt="">
+    <span>
+      Tams beauty
+    </span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+
+    <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+      <ul class="navbar-nav  ">
+        <span *ngIf="isadmin">
+          <li class="nav-item ">
+            <a class="nav-link" routerLink="" (click)="servicess()">Add service</a>
+          </li>
+        </span>
+         <span *ngIf="isadmin">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="" (click)="bookingsss()">Bookings</a>
+          </li>
+         </span>
+
+         <span *ngIf="isadmin">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="" (click)="nailoftheweek()">Nails</a>
+          </li>
+         </span>
+         <span *ngIf="isadmin">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="" (click)="viewusers()">Users</a>
+          </li>
+         </span>
+
+        <li class="nav-item" *ngIf="!istheuserloggedinn ">
+          <a class="nav-link" routerLink="" (click)="signinn()">sign in</a>
+        </li>
+        <li class="nav-item" *ngIf="!istheuserloggedinn">
+        <a class="nav-link" routerLink="" (click)="signup()">sign up</a>
+        </li>
+        <li class="nav-item" *ngIf="istheuserloggedinn">
+          <a class="nav-link" routerLink="" (click)="logout()">sign out</a>
+        </li>
+        <li class="nav-item" *ngIf="istheuserloggedinn">
+          <a class="nav-link" routerLink="" (click)="profile()">profile</a>
+        </li>
+        <li class="nav-item" *ngIf="istheuserloggedinn">
+          <a class="nav-link" routerLink="" >{{ currentuser?.username }}</a>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+
+
+<!--
+  <div class="hero_area">
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <img src="/assets/homepage/images/logo.jpg"  alt="">
+            <span>
+              Tams beauty
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+
+                  <a class="nav-link" routerLink="" (click)="servicess()">Services</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="" (click)="bookingsss()">Bookings</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="" (click)="signinn()">account</a>
+                </li>
+              </ul>
+
+            </div>
+
+          </div>
+        </nav>
+      </div>
+    </header>
+
+  </div>
+ -->

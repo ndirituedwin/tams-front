@@ -1,0 +1,19 @@
+<app-header></app-header>
+<p style="margin-top: 70px;text-align: center;">Users</p>
+<table class="table table-hover"  style="margin-top: 10px;">
+  <thead class=>
+    <tr>
+      <th scope="col">mobile</th>
+      <th scope="col">name</th>
+      <th scope="col">username</th>
+      <th scope="col">Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let booking of users">
+      <td>{{ booking.mobile }}</td>
+      <td>{{ booking?.name }}</td>
+      <td>{{ booking?.username }}</td>
+    </tr>
+  </tbody>
+</table>

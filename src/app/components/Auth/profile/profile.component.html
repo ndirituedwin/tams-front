@@ -1,0 +1,87 @@
+<app-header></app-header>
+<div class="row ">
+  <div class="col-md-12">
+      <div class="card" style="background-color: #fff8e3 ;">
+        <div  style="margin-top:100px ;">
+           <div class="row">
+            <div class="col-md-5">
+              <form  class="example-form"  [formGroup]="profileform" (ngSubmit)="updateprofile()">
+
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Cost</mat-label>
+                    <input matInput
+                    type="text"
+                    [formControlName]="'name'"
+                      name="name"
+                      required
+                      autofocus
+                    >
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>username</mat-label>
+                    <input matInput
+                    type="text"
+                    [formControlName]="'username'"
+                      name="username"
+                      required
+                      autofocus
+                    >
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>mobile</mat-label>
+                    <input matInput
+                    type="text"
+                    [formControlName]="'mobile'"
+                      name="mobile"
+                      required
+                      autofocus
+                    >
+                  </mat-form-field>
+                </div>
+                <!-- <button type="submit" class="bookservice">
+                  update profile
+               </button> -->
+              </form>
+            </div>
+             <div class="col-md-7">
+               <p>Your bookings</p>
+               <table class="table table-hover">
+                <thead class=>
+                  <tr>
+                    <th scope="col">amount paid</th>
+                    <th scope="col">amount required</th>
+                    <th scope="col">time paid</th>
+                    <th scope="col">attendant</th>
+                    <th scope="col">service</th>
+                    <th scope="col">service time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let booking of bookings">
+                    <td>{{ booking.amount }}</td>
+                    <td>{{ booking?.amountRequired }}</td>
+                    <td>{{ booking?.timepaid| date : 'short' }}</td>
+
+                    <td>{{ booking?.attendant?.name }}</td>
+                    <td>{{ booking?.services?.description }}</td>
+                    <td>{{ booking?.servicetime| date : 'short' }}</td>
+
+
+
+                  </tr>
+
+                </tbody>
+              </table>
+             </div>
+           </div>
+
+        </div>
+
+        </div>
+</div>
+</div>

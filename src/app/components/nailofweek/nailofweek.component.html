@@ -1,0 +1,113 @@
+
+<app-header></app-header>
+  <div class="card "  style="background-color: whitesmoke ;" style="margin-top:100px ;">
+   <div class="row container">
+    <form  class="example-form"  [formGroup]="nailform" (ngSubmit)="savenail()"  enctype="multipart/form-data">
+
+      <div class="col-md-8 ">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>description</mat-label>
+          <input matInput
+          type="text"
+          [formControlName]="'description'"
+            name="description"
+            required
+            autofocus
+          >
+        </mat-form-field>
+      </div>
+      <div class="col-md-8">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>cost</mat-label>
+          <input matInput
+          type="text"
+          [formControlName]="'cost'"
+            name="cost"
+            required
+            autofocus
+          >
+        </mat-form-field>
+      </div>
+      <div class="col-md-8" style="margin-bottom: 20px;">
+        <input type="file" nbInput fullWidth fieldSize="small" (change)="onFileSelected($event)"
+        [formControlName]="'file'">
+       </div>
+
+      <button type="submit" class="bookservice">
+        save
+     </button>
+    </form>
+    <div class="col-md-12">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Description</th>
+            <th scope="col">price</th>
+            <th scope="col">image</th>
+            <th scope="col">action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let service of nailsoftheweek">
+            <td>{{ service.description }}</td>
+            <td>{{ service.price }}</td>
+            <td><img src="/assets/nailsoftheweek/{{ service.image }}" alt="" style="height: 50px;width: 50px;"></td>
+            <th scope="col"><a class="btn btn-info" (click)="delete(service)">delete</a>
+            </th>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+   </div>
+  </div>
+<!-- <div class="row ">
+  <div class="col-md-12">
+      <div class="card" style="background-color: #fff8e3 ;">
+        <div  style="margin-top:100px ;">
+           <div class="row">
+            <div class="col-md-12">
+              <form  class="example-form"  [formGroup]="nailform" (ngSubmit)="savenail()"  enctype="multipart/form-data">
+
+                <div class="col-md-8">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>description</mat-label>
+                    <input matInput
+                    type="text"
+                    [formControlName]="'description'"
+                      name="description"
+                      required
+                      autofocus
+                    >
+                  </mat-form-field>
+                </div>
+                <div class="col-md-8">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>cost</mat-label>
+                    <input matInput
+                    type="text"
+                    [formControlName]="'cost'"
+                      name="cost"
+                      required
+                      autofocus
+                    >
+                  </mat-form-field>
+                </div>
+                <div class="col-md-8" style="margin-bottom: 20px;">
+                  <input type="file" nbInput fullWidth fieldSize="small" (change)="onFileSelected($event)"
+                  [formControlName]="'file'">
+                 </div>
+
+                <button type="submit" class="bookservice">
+                  save
+               </button>
+              </form>
+            </div>
+
+           </div>
+
+        </div>
+
+        </div>
+</div>
+</div> -->

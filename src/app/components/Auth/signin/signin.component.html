@@ -1,0 +1,80 @@
+
+
+
+
+ <div class="background">
+</div>
+<div class="content">
+  <h3 >Complete login to  <b class="highlighted">Tams beauty</b></h3>
+
+   <div class="row" style="margin-top: 10px;margin-bottom: 20px;">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <img src="/assets/homepage/images/logo.jpg" width="300px" height="250px" alt="">
+    </div>
+    <div class="col-md-4"></div>
+   </div>
+
+   <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <P style="color: rgb(236, 169, 169);">{{ fillallfields }}</P>
+      <p style="color: rgb(241, 169, 169)(241, 169, 169);">{{signinfailed !==null?signinfailed:'' }}</p>
+    </div>
+    <div class="col-md-4"></div>
+   </div>
+   <form [formGroup]="loginForm" (ngSubmit)="login()" >
+
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Enter your mobile number or username</mat-label>
+        <input matInput
+        type="text"
+        [formControlName]="'mobile'"
+          name="mobile"login
+          required
+          autofocus
+         />
+      </mat-form-field>
+       <div class="row">
+        <span class="spanauth" *ngIf="!loginForm.get('mobile').valid && loginForm.get('mobile').touched">
+          Please provide a valid mobile
+  </span>
+       </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <mat-form-field class="xample-full-width" appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" [formControlName]="'password'" required>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+      </mat-form-field>
+       <div class="row">
+        <span class="spanauth" *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched" >
+          Password cannot be empty
+      </span>
+       </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+  <div class="submit-button-div">
+    <button mat-flat-button color="primary">Sign in</button>
+  </div>
+  </form>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4"><a (click)="signup()" routerLink="#"><span style="font-size:large ;">Sign Up</span></a></div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
+
+
+
+

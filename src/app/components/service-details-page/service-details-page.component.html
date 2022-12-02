@@ -1,0 +1,160 @@
+
+<app-header></app-header>
+<div class="background"></div>
+<div class="container mt-5 mb-5">
+  <div class="row d-flex justify-content-center">
+      <div class="col-md-10">
+          <div class="card">
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="images p-3">
+                          <div class="text-center p-4">
+                             <img id="main-image" src="/assets/{{serviceimage?.serviceImage?.image }}" width="250" />
+                            </div>
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="product p-4">
+                          <div class="d-flex justify-content-between align-items-center">
+                              <div class="d-flex align-items-center"> Description  </div>
+                          </div>
+                          <div class="mt-4 mb-3">
+                              <p >{{ serviceimage?.serviceImage?.service.description }}</p>
+                              <div class="price d-flex flex-row align-items-center"> <span class="act-price">Cost</span>
+                                  <div class="ml-2"> <small class="dis-price">kshs{{  serviceimage?.serviceImage?.service.cost }}</small></div>
+                              </div>
+                          </div>
+                          <div class="cart mt-4 align-items-center"> <button  (click)="bookservice()" class="btn btn-danger text-uppercase mr-2 px-4">Book the service</button> </div>
+                      </div>
+                      <div class="row" *ngIf="istheuserloggedinn">
+                        <div class="col-md-12">
+                          <p style="align-items: center;">{{  fillallfields }}</p>
+                          <p style="align-items: center;">{{  error !==null?error:'' }}</p>
+                         <form  class="example-form"  [formGroup]="bookingform" (ngSubmit)="booktheservice()">
+                          <div class="row">
+                           <div class="col-md-6">
+                             <mat-form-field class="example-full-width" appearance="fill">
+                              <mat-label>amount to pay </mat-label>
+                              <mat-label><span style="font-size: larger;">Kshs<span style="color:green ;font-weight: bolder;">{{ serviceimage?.serviceImage?.service.cost }}</span></span> </mat-label>
+                              <input matInput placeholder=" amount to pay"
+                               [formControlName]="'amount'"
+                                 name="amount"
+                                 required
+                                 [readonly]="true"
+                                 autofocus
+                               >
+                             </mat-form-field>
+                           </div>
+                           <div class="col-md-6">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                              <mat-label>amount paid</mat-label>
+                              <input matInput placeholder=" amount paid"
+                              type="text"
+                              [formControlName]="'amountpaid'"
+                                name="amountpaid"
+                                required
+                                autofocus
+                              >
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-6">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                              <mat-label>Payment number</mat-label>
+                              <input matInput placeholder="mobile used for payment"
+                              type="text"
+                              [formControlName]="'mobileusedforpayment'"
+                                name="mobileusedforpayment"
+                                required
+                                autofocus
+                              >
+                            </mat-form-field>
+                           </div>
+
+                           <div class="col-md-6">
+                            <mat-form-field  class="example-full-width" appearance="fill">
+                              <mat-label>Time paid</mat-label>
+
+                              <input matInput type="datetime-local" placeholder="time paid" [formControlName]="'timeofpayment'">
+                            </mat-form-field>
+                           </div>
+                           <div class="col-md-6">
+                            <mat-form-field  class="example-full-width" appearance="fill">
+                              <mat-label>Service time</mat-label>
+
+                              <input matInput type="datetime-local" placeholder="service time" [formControlName]="'servicetime'">
+                            </mat-form-field>
+                           </div>
+                           <div class="col-md-6">
+                            <mat-form-field appearance="fill">
+                              <mat-label>Select attendant</mat-label>
+                                <mat-select  [(value)]="attendantid">
+                                  <mat-option>None</mat-option>
+
+                                  <mat-option *ngFor="let attendant of attendants" [value]="attendant.value">
+                                     {{attendant.viewValue}}
+                                     </mat-option>
+                                     {{ attendantid }}
+                              </mat-select>
+                            </mat-form-field>
+                           </div>
+
+
+                          </div>
+
+                         <button type="submit" class="bookservice">
+                          book service
+                       </button>
+                       </form>
+
+
+                        </div>
+                     </div>
+
+                  </div>
+              </div>
+              <!-- <div class="row">
+                 <div class="col-md-6">
+
+                 </div>
+                 <div class="col-md-6">
+                  <form  class="example-form"  [formGroup]="bookingform" (ngSubmit)="booktheservice()">
+                   <div class="row">
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>service</mat-label>
+                        <textarea matInput placeholder=" description"
+                        type="text"
+                        [formControlName]="'description'"
+                          name="description"
+                          required
+                          autofocus
+                        ></textarea>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>service</mat-label>
+                        <textarea matInput placeholder=" description"
+                        type="text"
+                        [formControlName]="'description'"
+                          name="description"
+                          required
+                          autofocus
+                        ></textarea>
+                      </mat-form-field>
+                    </div>
+
+                   </div>
+
+                  <button type="submit" class="bookservice">
+                   book service
+                </button>
+                </form>
+
+
+                 </div>
+              </div> -->
+          </div>
+      </div>
+  </div>
+</div>
